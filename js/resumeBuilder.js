@@ -20,7 +20,7 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
 	"name" : "Prateek Singh",
 	"role" : "Web Developer",
-	"contact_info" : {
+	"contacts" : {
 		"mobile" : "9819463435",
 		"email"  : "prateek@gmail.com",
 		"twitter": "@prateek",
@@ -58,7 +58,7 @@ var education = {
 	"schools" : [
 		{
 			"name" : "C-DAC ACTS",
-			"city" : "Bangalore",
+			"location" : "Bangalore",
 			"degree" : "Masters",
 			"majors" : "SCADA",
 			"dates" : 2012,
@@ -66,7 +66,7 @@ var education = {
 		},
 		{
 			"name" : "CERT",
-			"city" : "Meerut",
+			"location" : "Meerut",
 			"degree" : "UG",
 			"majors" : "B.TECH",
 			"dates" : 2010,
@@ -76,7 +76,7 @@ var education = {
 	"onlineCourses" : [
 		{
 			"name" : "javaScript Creash Course",
-			"city" : "Mumbai",
+			"location" : "Mumbai",
 			"school": "udacity",
 			"dates" : 2012,
 			"url" : "http://udacity.in"
@@ -90,9 +90,22 @@ var projects = {
 			"title" : "SCADA",
 			"dates" : 2012,
 			"description" : "nothing to do",
-			"images" : [ 
-				"images/fry.jpg"
-			]
+			"images" : [ "images/scada.jpg" ],
+			"location": "Mumbai"
+		},
+		{
+			"title" : "UTM",
+			"dates" : 2013,
+			"description" : "again nothing to do",
+			"images" : [ "images/utm.jpg" ],
+			"location": "Mumbai"
+		},
+		{
+			"title" : "CLOUD",
+			"dates" : 2015,
+			"description" : "learned openstack",
+			"images" : [ "images/cloud.jpg" ],
+			"location": "Mumbai"
 		}
 	]
 }
@@ -173,13 +186,18 @@ function inName (name) {
 }
 
 $('#main').append(internationalizeButton);
-/*
-projects.display() {
+
+projects.display = function() {
 	for(project in projects.projects) {
-		$("#projects").append(HTMLprojectStart);
-		$(".project-entry:last").append(HTMLprojectTitle("%data%",projects.projects[project].title));
-		$(".project-entry:last").append(HTMLprojectDates("%data%",projects.projects[project].dates));
-		$(".project-entry:last").append(HTMLprojectDescription("%data%",projects.projects[project].description));
+		 $("#projects").append(HTMLprojectStart);
+		 console.log(projects.projects[project].title);
+		 $(".project-entry:last").append(HTMLprojectTitle.replace("%data%",projects.projects[project].title));
+		 $(".project-entry:last").append(HTMLprojectDates.replace("%data%",projects.projects[project].dates));
+		 $(".project-entry:last").append(HTMLprojectDescription.replace("%data%",projects.projects[project].description));
+		 $(".project-entry:last").append(HTMLprojectImage.replace("%data%",projects.projects[project].images));
 	}
 }
-*/
+
+projects.display();
+
+$("#mapDiv").append(googleMap);
